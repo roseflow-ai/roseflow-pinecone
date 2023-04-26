@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://roseflow-test-1601616.svc.<PINECONE_ENVIRONMENT>.pinecone.io/vectors/upsert
+    body:
+      encoding: UTF-8
+      string: '{"vectors":[{"id":"5","values":[1.2,2.3,3.4]}],"namespace":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Apr 2023 19:22:37 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '10'
+      Grpc-Status:
+      - '0'
+      Content-Length:
+      - '19'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"upsertedCount":1}'
+  recorded_at: Wed, 26 Apr 2023 19:22:38 GMT
+- request:
+    method: post
+    uri: https://roseflow-test-1601616.svc.<PINECONE_ENVIRONMENT>.pinecone.io/vectors/update
+    body:
+      encoding: UTF-8
+      string: '{"id":"5"}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Apr 2023 19:22:38 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '9'
+      Grpc-Status:
+      - '0'
+      Content-Length:
+      - '2'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Wed, 26 Apr 2023 19:22:38 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://controller.<PINECONE_ENVIRONMENT>.pinecone.io/databases
+    body:
+      encoding: UTF-8
+      string: '{"name":"roseflow-test"}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Wed, 26 Apr 2023 19:14:29 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '1026'
+      Content-Length:
+      - '131'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: The index exceeds the project quota of 2 pods by 1 pods. Upgrade your
+        account or change the project settings to increase the quota.
+  recorded_at: Wed, 26 Apr 2023 19:14:29 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://controller.<PINECONE_ENVIRONMENT>.pinecone.io/databases
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Apr 2023 18:52:12 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '987'
+      Content-Length:
+      - '18'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '["roseflow-test"]
+
+        '
+  recorded_at: Wed, 26 Apr 2023 18:52:12 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://roseflow-test-1601616.svc.<PINECONE_ENVIRONMENT>.pinecone.io/vectors/fetch?ids=1&namespace=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Apr 2023 19:22:38 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '1'
+      Grpc-Status:
+      - '0'
+      Content-Length:
+      - '60'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"vectors":{"1":{"id":"1","values":[1,2,3]}},"namespace":""}'
+  recorded_at: Wed, 26 Apr 2023 19:22:39 GMT
+recorded_with: VCR 6.1.0

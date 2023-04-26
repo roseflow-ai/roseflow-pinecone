@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://controller.<PINECONE_ENVIRONMENT>.pinecone.io/databases
+    body:
+      encoding: UTF-8
+      string: '{"dimensions":1024,"name":"roseflow-test"}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Wed, 26 Apr 2023 19:01:11 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '1147'
+      Content-Length:
+      - '34'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: index roseflow-test already exists
+  recorded_at: Wed, 26 Apr 2023 19:01:11 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://roseflow-test-1601616.svc.<PINECONE_ENVIRONMENT>.pinecone.io/vectors/upsert
+    body:
+      encoding: UTF-8
+      string: '{"vectors":[{"id":"foo","values":[1.0,2.0,3.0,4.0]},{"id":"bar","values":[4.0,5.0,6.0,7.0]}],"namespace":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Apr 2023 19:21:50 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '1'
+      Content-Length:
+      - '98'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"code":3,"message":"Vector dimension 4 does not match the dimension
+        of the index 3","details":[]}'
+  recorded_at: Wed, 26 Apr 2023 19:21:50 GMT
+recorded_with: VCR 6.1.0

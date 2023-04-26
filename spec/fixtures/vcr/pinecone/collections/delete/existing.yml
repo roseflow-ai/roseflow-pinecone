@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://controller.<PINECONE_ENVIRONMENT>.pinecone.io/collections/example-collection
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Api-Key:
+      - "<PINECONE_KEY>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Wed, 26 Apr 2023 19:11:00 GMT
+      X-Envoy-Upstream-Service-Time:
+      - '50'
+      Content-Length:
+      - '0'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 26 Apr 2023 19:11:00 GMT
+recorded_with: VCR 6.1.0

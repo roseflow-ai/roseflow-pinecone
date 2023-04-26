@@ -1,0 +1,3 @@
+default: &default
+  environment: <YOUR PINECONE ENVIRONMENT>
+  api_key: <YOUR PINECONE API KEY>
