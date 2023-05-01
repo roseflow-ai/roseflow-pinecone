@@ -31,8 +31,15 @@ module Roseflow
           end
         end
 
-        describe "Index URL" do
-
+        describe "Index" do
+          it "sets an URL for index" do
+            VCR.use_cassette("pinecone/index_url", record: :new_episodes, allow_playback_repeats: true) do
+              expect(client.index_url).to be_nil
+              expect(client.index("roseflow-test")).to be_a(Vector)
+              expect(client.index_url).to be_a String
+              expect(client.index_url).to match(/roseflow-test/)
+            end
+          end
         end
       end
 

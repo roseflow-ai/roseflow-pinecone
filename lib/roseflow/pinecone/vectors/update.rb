@@ -21,7 +21,7 @@ module Roseflow
           params do
             required(:id).filled(:string)
             optional(:namespace).filled(:string)
-            optional(:vectors).filled(:array)
+            optional(:values).filled(:array)
             optional(:sparse_values).filled
             optional(:metadata).filled(:hash)
           end
@@ -31,7 +31,7 @@ module Roseflow
 
         attribute :id, Dry::Types['string']
         attribute? :namespace, Dry::Types['string'].optional
-        attribute? :vectors, Dry::Types['array'].of(Dry::Types['float']).optional
+        attribute? :values, Dry::Types['array'].of(Dry::Types['float']).optional
         attribute? :sparse_values, SparseVector.optional
         attribute? :metadata, Dry::Types['hash'].optional
       end

@@ -16,6 +16,7 @@ end
 module Roseflow
   module Pinecone
     class Error < StandardError; end
+    class IndexURLNotSetError < Error; end
   end
 end
 

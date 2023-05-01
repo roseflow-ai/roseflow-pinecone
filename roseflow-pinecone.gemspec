@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "awesome_print"
   spec.add_development_dependency "pry"
-  # spec.add_development_dependency "roseflow"
+  spec.add_development_dependency "roseflow"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "vcr"
 

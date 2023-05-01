@@ -4,6 +4,7 @@ require "faraday"
 require "faraday/retry"
 
 require "roseflow/pinecone/index"
+require "roseflow/pinecone/vector"
 
 module Roseflow
   module Pinecone
@@ -51,19 +52,25 @@ module Roseflow
       end
 
       def index(name)
-        @index ||= Vector.new(index_connection, name)
+        @index ||= get_vector_index(name)
       end
       
       private
 
-      def environment_url(region)
-        "https://controller.#{region}.pinecone.io"
+      def get_vector_index(name)
+        return Vector.new(index_connection(index_url)) if index_url && index_url.match(/#{name}/)
+        @index_url = describe_index(name).object.status.host
+        return Vector.new(index_connection(@index_url))
       end
 
-      def index_url(index)
-        raise NotImplementedError
+      def environment_url(env)
+        "https://controller.#{env}.pinecone.io"
       end
-      
+
+      def index_url_for(url)
+        "https://#{url}"
+      end
+
       def connection
         @connection ||= Faraday.new(
           url: environment_url(@environment),
@@ -77,9 +84,10 @@ module Roseflow
         end
       end
 
-      def index_connection(index = nil)
-        @connection ||= Faraday.new(
-          url: index_url(index),
+      def index_connection(index_url = nil)
+        raise IndexURLNotSetError, "You must provide index URL to access an index" unless index_url
+        @index_connection ||= Faraday.new(
+          url: index_url_for(index_url),
           headers: {
             "accept": "application/json; charset=utf-8",
             "Api-Key": @api_key,

@@ -63,6 +63,12 @@ module Roseflow
       def failure?
         !success?
       end
+
+      def vectors
+        @vectors.map do |vector|
+          Vector::VectorObject.new(vector.last)
+        end
+      end
       
       private
 
@@ -74,13 +80,37 @@ module Roseflow
           @body = JSON.parse(@response.body)
         when :update
           @body = JSON.parse(@response.body)
+        end
+        @status = response.status
+      end
+    end
+
+    class VectorQueryResponse < VectorResponse
+      def vectors
+        case @method_
+        when :fetch
+          @vectors.map do |vector|
+            Vector::VectorObject.new(vector.last)
+          end
+        when :query
+          @vectors.map do |vector|
+            Vector::VectorObject.new(vector)
+          end
+        end
+      end
+
+      private
+
+      def handle_response
+        case @method_
         when :fetch
           @body = JSON.parse(@response.body)
           @vectors = @body["vectors"]
         when :query
           @body = JSON.parse(@response.body)
+          @vectors = @body["matches"]
         end
-        @status = response.status
+        @status = @response.status
       end
     end
 

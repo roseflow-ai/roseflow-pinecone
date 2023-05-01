@@ -200,7 +200,7 @@ module Roseflow
           it "returns a response" do
             expect(response).to be_a_success
             expect(response.status).to eq(200)
-            expect(response.vectors.keys).to include("1")
+            expect(response.vectors.map(&:id)).to include("1")
           end
         end
       end

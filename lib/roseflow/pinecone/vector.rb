@@ -9,13 +9,24 @@ require "roseflow/pinecone/response"
 module Roseflow
   module Pinecone
     class Vector
+      attr_reader :connection
+
       def initialize(connection)
         @connection = connection
       end
 
+      def self.build(id:, values:, sparse_values: nil, metadata: nil)
+        VectorObject.new(
+          id: id,
+          values: values,
+          sparse_values: sparse_values,
+          metadata: metadata
+        )
+      end
+
       def query(query)
         object = query.is_a?(Query) ? query : Query.new(query)
-        VectorResponse.new(
+        VectorQueryResponse.new(
           method: :query,
           response: @connection.post("/query", object.to_json)
         )
@@ -52,7 +63,7 @@ module Roseflow
             ids: options.fetch(:ids, [])
           }
         )
-        VectorResponse.new(
+        VectorQueryResponse.new(
           method: :fetch,
           response: @connection.get("/vectors/fetch?#{query_string}")
         )
