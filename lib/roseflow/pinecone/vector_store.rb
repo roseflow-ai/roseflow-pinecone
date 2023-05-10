@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "roseflow/vector_stores/base"
+require "roseflow/pinecone"
 require "roseflow/pinecone/vector"
 require "roseflow/pinecone/vectors/vector_object"
 
@@ -21,8 +22,8 @@ module Roseflow
         Vector.build(id: name, values: content)
       end
 
-      def create_vector(name, vector)
-        index(name).upsert(vectors: [vector])
+      def create_vector(name, vector, **options)
+        index(name).upsert(options.merge(vectors: [vector]))
       end
 
       def delete_vector(name, id)
@@ -39,8 +40,8 @@ module Roseflow
 
       alias_method :where, :query
 
-      def find(name, ids)
-        index(name).fetch(ids: ids).vectors.first
+      def find(name, ids, **options)
+        index(name).fetch(options.merge(ids: ids)).vectors.first
       end
     end
   end

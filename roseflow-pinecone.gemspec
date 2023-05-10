@@ -4,7 +4,7 @@ require_relative "lib/roseflow/pinecone/version"
 
 Gem::Specification.new do |spec|
   spec.name = "roseflow-pinecone"
-  spec.version = Roseflow::Pinecone::VERSION
+  spec.version = Roseflow::Pinecone.gem_version
   spec.authors = ["Lauri Jutila"]
   spec.email = ["git@laurijutila.com"]
 
